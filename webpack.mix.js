@@ -28,7 +28,7 @@ const themeColors = {
   'blue-light': '#62a8ea',
   // Tailwind CSS themes
   'slate': '#0f172a',
-  'gray': '#171717',
+  'gray': '#111827',
   'zinc': '#18181b',
   'neutral': '#171717',
   'stone': '#1c1917',

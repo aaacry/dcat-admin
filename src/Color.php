@@ -105,9 +105,9 @@ class Color
         ],
         'gray' => [
             'colors' => [
-                'primary' => '#171717',
-                'primary-darker' => '#171717',
-                'link' => '#171717',
+                'primary' => '#030712',
+                'primary-darker' => '#030712',
+                'link' => '#111827',
             ],
         ],
         // Tailwind CSS 配色主题
