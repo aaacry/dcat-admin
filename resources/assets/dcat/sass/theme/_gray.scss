@@ -25,6 +25,12 @@ body.layout-color-gray {
   .header-navbar a,
   .navbar-header a {
     color: #fff;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: #fff !important;
+    }
   }
 
   .user-name {
@@ -37,6 +43,10 @@ body.layout-color-gray {
   .bg-primary {
     background-color: $gray-theme-header !important;
     color: #fff !important;
+
+    a {
+      color: #fff !important;
+    }
   }
 
   // ============================================
@@ -108,6 +118,24 @@ body.layout-color-gray {
       &.active {
         color: #fff;
         font-weight: bold;
+      }
+    }
+
+    // 加号图标：默认浅白，悬停纯白，避免深底不可见
+    ul > li a.add {
+      color: rgba(255, 255, 255, 0.75) !important;
+
+      &:hover {
+        color: #fff !important;
+      }
+    }
+
+    // 垃圾桶图标：浅红（语义“清除”），深底可见，悬停变亮
+    ul > li a.clear {
+      color: #f87171 !important;
+
+      &:hover {
+        color: #fca5a5 !important;
       }
     }
   }

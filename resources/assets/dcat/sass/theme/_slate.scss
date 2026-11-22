@@ -20,6 +20,12 @@ body.layout-color-slate {
   .header-navbar a,
   .navbar-header a {
     color: #fff;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: #fff !important;
+    }
   }
 
   .user-name {
@@ -29,6 +35,10 @@ body.layout-color-slate {
   .bg-primary {
     background-color: $slate-theme-header !important;
     color: #fff !important;
+
+    a {
+      color: #fff !important;
+    }
   }
 
   .btn-primary {
@@ -75,6 +85,41 @@ body.layout-color-slate {
   .grid-selector .wrap {
     background-color: $slate-theme-header;
     color: #fff;
+
+    .select-label {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    ul > li a {
+      color: rgba(255, 255, 255, 0.85);
+
+      &:hover {
+        color: #fff;
+      }
+
+      &.active {
+        color: #fff;
+        font-weight: bold;
+      }
+    }
+
+    // 加号图标：默认浅白，悬停纯白，避免深底不可见
+    ul > li a.add {
+      color: rgba(255, 255, 255, 0.75) !important;
+
+      &:hover {
+        color: #fff !important;
+      }
+    }
+
+    // 垃圾桶图标：浅红（语义“清除”），深底可见，悬停变亮
+    ul > li a.clear {
+      color: #f87171 !important;
+
+      &:hover {
+        color: #fca5a5 !important;
+      }
+    }
   }
 
   .pagination .page-item.active .page-link {
