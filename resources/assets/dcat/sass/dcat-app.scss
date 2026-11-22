@@ -148,3 +148,6 @@ li {
 
 // custom enhancements
 @import "./components/custom";
+
+// dark mode fixes（必须最后加载，覆盖上面的硬编码浅色值）
+@import "./theme/dark-fixes";

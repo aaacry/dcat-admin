@@ -24,7 +24,7 @@ body.layout-color-gray {
 
   .header-navbar a,
   .navbar-header a {
-    color: #fff;
+    color: #fff !important;
 
     &:hover,
     &:focus,
@@ -85,16 +85,18 @@ body.layout-color-gray {
   // ============================================
   // Link Colors (override AdminLTE blue links)
   // ============================================
-  a {
-    color: $gray-theme-header;
+  &:not(.dark-mode) {
+    a {
+      color: $gray-theme-header;
 
-    &:hover {
-      color: $gray-theme-header-hover;
+      &:hover {
+        color: $gray-theme-header-hover;
+      }
     }
-  }
 
-  .text-primary {
-    color: $gray-theme-header !important;
+    .text-primary {
+      color: $gray-theme-header !important;
+    }
   }
 
   // ============================================
@@ -161,7 +163,8 @@ body.layout-color-gray {
     color: $gray-theme-sidebar-text;
   }
 
+  // 亮色侧边栏的激活项背景是浅灰，文字必须用深色，否则白字不可见
   .sidebar-light-primary .nav-item > .nav-link.active {
-    color: #fff !important;
+    color: $gray-theme-primary !important;
   }
 }

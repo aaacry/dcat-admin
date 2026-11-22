@@ -321,13 +321,15 @@ class Color
         // 背景色
         'background' => '#eff3f8',
 
-        // 深色模式
+        // 深色模式（与 resources/assets/dcat/sass/theme/_colors.scss 保持一致）
         // 背景色
-        'dark-mode-bg' => '#2c2c43',
+        'dark-mode-bg' => '#1e1e2b',
         // 深色
-        'dark-mode-color' => '#222233',
-        'dark-mode-color2' => '#1e1e2d',
-        'dark-mode-font' => '#a8a9bb',
+        'dark-mode-color' => '#262636',
+        'dark-mode-color2' => '#17171f',
+        'dark-mode-font' => '#b6b7c8',
+        'dark-mode-border' => '#3b3b50',
+        'dark-mode-muted' => '#8e8fa3',
     ];
 
     /**
@@ -442,6 +444,79 @@ class Color
     public function alpha(?string $color, $alpha)
     {
         return Helper::colorAlpha((string) $this->get($color, $color), $alpha);
+    }
+
+    /**
+     * 获取图表颜色.
+     *
+     * 深色模式下，主题的 primary 可能是近黑色（gray/zinc/slate 等），
+     * 直接画在深色卡片上会不可见，这里替换为可读的强调色。
+     *
+     * @param  string|null  $style
+     * @param  string|null  $default
+     * @return string
+     */
+    public function chartColor(?string $style = null, ?string $default = null)
+    {
+        $style = $style ?: 'primary';
+        $color = (string) $this->get($style, $default);
+
+        if (Admin::isDarkMode() && static::isDarkColor($color)) {
+            return (string) $this->get('dark-mode-font');
+        }
+
+        return $color;
+    }
+
+    /**
+     * 深色模式下的图表配色.
+     *
+     * @return array
+     */
+    public function darkModeChartColors(): array
+    {
+        return [
+            $this->get('dark-mode-font'),
+            $this->get('blue2'),
+            $this->get('success'),
+            $this->get('orange'),
+            $this->get('cyan'),
+        ];
+    }
+
+    /**
+     * 判断颜色是否过暗（用于深色背景上是否需要替换）.
+     *
+     * @param  string  $color
+     * @return bool
+     */
+    public static function isDarkColor(string $color)
+    {
+        if (! preg_match('/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/', $color)) {
+            return false;
+        }
+
+        $hex = ltrim($color, '#');
+
+        if (strlen($hex) === 3) {
+            $hex = $hex[0].$hex[0].$hex[1].$hex[1].$hex[2].$hex[2];
+        }
+
+        $rgb = array_map(
+            static fn ($part) => hexdec($part) / 255,
+            str_split($hex, 2)
+        );
+
+        $linear = array_map(static function ($channel) {
+            return $channel <= 0.03928
+                ? $channel / 12.92
+                : (($channel + 0.055) / 1.055) ** 2.4;
+        }, $rgb);
+
+        // 相对亮度
+        $luminance = 0.2126 * $linear[0] + 0.7152 * $linear[1] + 0.0722 * $linear[2];
+
+        return $luminance < 0.15;
     }
 
     /**

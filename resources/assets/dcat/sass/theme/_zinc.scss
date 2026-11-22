@@ -19,7 +19,7 @@ body.layout-color-zinc {
 
   .header-navbar a,
   .navbar-header a {
-    color: #fff;
+    color: #fff !important;
 
     &:hover,
     &:focus,
@@ -70,16 +70,18 @@ body.layout-color-zinc {
     }
   }
 
-  a {
-    color: $zinc-theme-header;
+  &:not(.dark-mode) {
+    a {
+      color: $zinc-theme-header;
 
-    &:hover {
-      color: $zinc-theme-header-hover;
+      &:hover {
+        color: $zinc-theme-header-hover;
+      }
     }
-  }
 
-  .text-primary {
-    color: $zinc-theme-header !important;
+    .text-primary {
+      color: $zinc-theme-header !important;
+    }
   }
 
   .grid-selector .wrap {

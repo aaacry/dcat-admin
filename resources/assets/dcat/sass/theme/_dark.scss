@@ -33,10 +33,10 @@ body.dark-mode {
   }
 
   a {
-    color: lighten($primary, 1%);
+    color: $dark-mode-accent;
 
     &:hover {
-      color: darken($primary, 4%);
+      color: lighten($dark-mode-accent, 8%);
     }
   }
 
@@ -44,7 +44,7 @@ body.dark-mode {
     color: darken($body-dark-font-color, 15%);
   }
   .grid-column-header a:hover, .grid-column-header a.active {
-    color: lighten($primary, 1%);
+    color: $dark-mode-accent;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -330,12 +330,12 @@ body.dark-mode {
     }
 
     .nav-item .nav-link.active {
-      color: $primary;
+      color: $dark-mode-accent;
     }
 
     .nav-item .nav-link.active:after {
       // 扁平化：纯主色，与亮色 tab 激活态 border-bottom 视觉一致
-      background: $primary !important;
+      background: $dark-mode-accent !important;
     }
   }
 
@@ -704,7 +704,7 @@ body.dark-mode {
   }
   .alert.alert-primary {
     h3, h4, h5 {
-      color: $primary-darker;
+      color: $dark-mode-accent;
     }
   }
   .alert.alert-warning {
@@ -785,7 +785,7 @@ body.dark-mode {
     }
 
     .select-options a.active {
-      color: $primary
+      color: $dark-mode-accent
     }
   }
 
@@ -835,10 +835,10 @@ body.dark-mode {
 
     .done .dcat-step-icons {
       background-color: transparent;
-      border-color: $primary;
+      border-color: $dark-mode-accent;
     }
     .done .dcat-step-icons > .dcat-step-icon {
-      color: $primary
+      color: $dark-mode-accent
     }
   }
   .dcat-done-step .st-title {
@@ -863,7 +863,7 @@ body.dark-mode {
   // ------- sidebar
   [class*=sidebar-dark-] {
     background-image: none;
-    background-color: $body-dark-color!important;
+    background-color: $body-darker-color!important;
 
     .navbar-header {
       background: $body-darker-color;

@@ -389,7 +389,15 @@ class Card extends Widget
 
         // 颜色
         if (empty($this->chartOptions['colors'])) {
-            $this->chartOptions['colors'] = (array) Admin::color()->get($this->style);
+            $colors = (array) Admin::color()->get($this->style);
+
+            // 深色模式下主色可能过暗（gray/zinc/slate 等近黑主题），
+            // 图表会完全不可见，这里换成可读的配色。
+            if (Admin::isDarkMode() && Admin::color()->isDarkColor((string) ($colors[0] ?? ''))) {
+                $colors = Admin::color()->darkModeChartColors();
+            }
+
+            $this->chartOptions['colors'] = $colors;
         }
 
         // 图表配置选项

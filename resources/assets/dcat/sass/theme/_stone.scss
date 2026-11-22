@@ -19,7 +19,7 @@ body.layout-color-stone {
 
   .header-navbar a,
   .navbar-header a {
-    color: #fff;
+    color: #fff !important;
 
     &:hover,
     &:focus,
@@ -70,16 +70,18 @@ body.layout-color-stone {
     }
   }
 
-  a {
-    color: $stone-theme-header;
+  &:not(.dark-mode) {
+    a {
+      color: $stone-theme-header;
 
-    &:hover {
-      color: $stone-theme-header-hover;
+      &:hover {
+        color: $stone-theme-header-hover;
+      }
     }
-  }
 
-  .text-primary {
-    color: $stone-theme-header !important;
+    .text-primary {
+      color: $stone-theme-header !important;
+    }
   }
 
   .grid-selector .wrap {

@@ -1,0 +1,329 @@
+// ================================================================================================
+//  File Name: _dark-fixes.scss
+//  Description: 深色模式统一修正
+//  ----------------------------------------------------------------------------------------------
+//  该文件最后加载，用于覆盖 components 目录中未做深色适配的硬编码浅色值
+//  （_custom.scss / _modern.scss / _button.scss 等），并统一深色模式的层次与对比度。
+// ================================================================================================
+
+body.dark-mode {
+  // ---------------------------------------------------------------
+  // 基础层次
+  // ---------------------------------------------------------------
+  .content-header h1 {
+    color: $body-dark-heading-color;
+
+    small {
+      color: $body-dark-muted-color;
+    }
+  }
+
+  .breadcrumb,
+  .breadcrumb a {
+    color: $body-dark-muted-color;
+  }
+
+  // 近黑色主题的 primary 在深色背景上不可见，统一改为强调色
+  .text-primary,
+  .link-primary {
+    color: $dark-mode-accent !important;
+  }
+
+  .main-footer {
+    background: $body-dark-bg;
+    border-top-color: $body-dark-border-color;
+    color: $body-dark-muted-color;
+  }
+
+  // ---------------------------------------------------------------
+  // 按钮
+  // ---------------------------------------------------------------
+  .btn-secondary {
+    background-color: $body-dark-color !important;
+    border-color: $body-dark-border-color !important;
+    color: $body-dark-font-color !important;
+
+    &:hover,
+    &:focus {
+      background-color: lighten($body-dark-color, 5%) !important;
+      border-color: lighten($body-dark-color, 8%) !important;
+      color: $body-dark-heading-color !important;
+    }
+  }
+
+  .btn-white,
+  .btn-default,
+  .btn-light {
+    background-color: $body-dark-color !important;
+    border-color: $body-dark-border-color !important;
+    color: $body-dark-font-color !important;
+
+    &:hover,
+    &:focus {
+      background-color: lighten($body-dark-color, 5%) !important;
+      border-color: lighten($body-dark-color, 8%) !important;
+      color: $body-dark-heading-color !important;
+    }
+  }
+
+  // 主色按钮在深色背景上需要描边，避免与卡片糊在一起
+  .btn-primary:not(.btn-outline) {
+    border-color: $body-dark-border-color !important;
+  }
+
+  .btn-outline-primary {
+    color: $dark-mode-accent !important;
+    border-color: $dark-mode-accent !important;
+  }
+
+  // 按钮组之间的分隔线
+  .btn-group > .btn:not(:last-child) {
+    border-right-color: $body-dark-border-color !important;
+  }
+
+  // ---------------------------------------------------------------
+  // 表单
+  // ---------------------------------------------------------------
+  .form-control,
+  .custom-select,
+  .form-control-plaintext {
+    background-color: $body-dark-bg !important;
+    border-color: $body-dark-border-color !important;
+    color: $body-dark-font-color !important;
+
+    &::placeholder {
+      color: $body-dark-muted-color !important;
+    }
+  }
+
+  .input-group-text,
+  .input-group-prepend,
+  .input-group-append,
+  .input-group-addon {
+    background-color: $body-dark-bg !important;
+    border-color: $body-dark-border-color !important;
+    color: $body-dark-font-color !important;
+  }
+
+  .input-group-text.bg-white {
+    background-color: $body-dark-bg !important;
+  }
+
+  .form-control:focus {
+    border-color: $dark-mode-accent !important;
+  }
+
+  .table-filter .form-control {
+    border-color: $body-dark-border-color !important;
+    background-color: $body-dark-bg !important;
+  }
+
+  // ---------------------------------------------------------------
+  // 卡片 / 容器
+  // ---------------------------------------------------------------
+  .card,
+  .box,
+  .dcat-box,
+  .filter-box,
+  .dcat-box:not(.simple-grid > .dcat-box) {
+    background-color: $body-dark-card-bg;
+    border-color: $body-dark-border-color;
+  }
+
+  .card-header,
+  .box-header,
+  .dd-handle,
+  .with-border {
+    border-color: $body-dark-border-color !important;
+  }
+
+  .box-footer,
+  .card-footer {
+    border-color: $body-dark-border-color !important;
+  }
+
+  .table-collapse {
+    background: transparent;
+    border-color: $body-dark-border-color;
+  }
+
+  .table-collapse .table-fixed th,
+  table.data-table thead tr {
+    background-color: $body-dark-card-bg;
+  }
+
+  // ---------------------------------------------------------------
+  // 表格
+  // ---------------------------------------------------------------
+  table.custom-data-table.data-table thead th {
+    border-bottom-color: $body-dark-border-color;
+    color: $body-dark-font-color;
+  }
+
+  table.custom-data-table.data-table tbody tr:hover,
+  .table tbody tr:hover {
+    background-color: lighten($body-dark-color, 4%) !important;
+  }
+
+  .table thead tr th {
+    background-color: $body-dark-table-bg;
+  }
+
+  .table tbody tr td,
+  .table tbody tr th {
+    background-color: $body-dark-card-bg !important;
+    border-color: $body-dark-border-color !important;
+  }
+
+  .table.table-hover tbody tr:hover td,
+  .table.table-hover tbody tr:hover th {
+    background-color: lighten($body-dark-color, 4%) !important;
+  }
+
+  .table-striped tbody tr:nth-of-type(odd) td {
+    background-color: lighten($body-dark-card-bg, 2%) !important;
+  }
+
+  .grid-column-header a {
+    color: $body-dark-muted-color;
+  }
+
+  // ---------------------------------------------------------------
+  // 分页
+  // ---------------------------------------------------------------
+  .pagination {
+    .page-item {
+      .page-link,
+      span.page-link {
+        background-color: $body-dark-color !important;
+        border-color: $body-dark-border-color !important;
+        color: $body-dark-font-color !important;
+      }
+
+      &.disabled .page-link {
+        color: $body-dark-muted-color !important;
+        opacity: .6;
+      }
+
+      &.active {
+        background-color: transparent !important;
+
+        .page-link,
+        span.page-link {
+          background-color: $dark-mode-accent !important;
+          border-color: $dark-mode-accent !important;
+          color: #11131a !important;
+        }
+      }
+
+      &:not(.active):not(.disabled) .page-link:hover {
+        background-color: lighten($body-dark-color, 6%) !important;
+        color: $body-dark-heading-color !important;
+      }
+    }
+  }
+
+  .per-pages-selector .btn-white,
+  .per-pages-selector .btn-default {
+    background-color: $body-dark-color !important;
+    border-color: $body-dark-border-color !important;
+    color: $body-dark-font-color !important;
+  }
+
+  // ---------------------------------------------------------------
+  // Grid 分类选择器
+  // ---------------------------------------------------------------
+  .grid-selector .wrap {
+    background-color: $body-dark-color !important;
+    color: $body-dark-font-color;
+
+    .select-label {
+      color: $body-dark-muted-color;
+    }
+
+    ul > li a {
+      color: $body-dark-font-color;
+
+      &:hover {
+        color: $body-dark-heading-color;
+      }
+
+      &.active {
+        color: $dark-mode-accent;
+      }
+
+      &.add {
+        color: $body-dark-muted-color !important;
+
+        &:hover {
+          color: $body-dark-heading-color !important;
+        }
+      }
+
+      &.clear {
+        color: #f87171 !important;
+
+        &:hover {
+          color: #fca5a5 !important;
+        }
+      }
+    }
+  }
+
+  // ---------------------------------------------------------------
+  // 下拉菜单 / Select2
+  // ---------------------------------------------------------------
+  .dropdown-menu {
+    background-color: $body-dark-color;
+    border-color: $body-dark-border-color;
+  }
+
+  .select2-container--default .select2-selection--single,
+  .select2-container--default .select2-selection--multiple {
+    border-color: $body-dark-border-color !important;
+  }
+
+  .select2-container--default .select2-dropdown {
+    border-color: $body-dark-border-color !important;
+  }
+
+  // ---------------------------------------------------------------
+  // 提示 / 标签
+  // ---------------------------------------------------------------
+  .help-block {
+    color: $body-dark-muted-color !important;
+  }
+
+  .badge-light,
+  .label-light {
+    background-color: $body-dark-color !important;
+    color: $body-dark-font-color !important;
+  }
+
+  // ---------------------------------------------------------------
+  // 侧边栏
+  // ---------------------------------------------------------------
+  .main-sidebar {
+    border-right-color: $body-dark-border-color;
+  }
+
+  [class*='sidebar-dark-'] {
+    .nav-sidebar > .nav-item > .nav-link.active,
+    .nav-treeview > .nav-item > .nav-link.active,
+    .nav-treeview > .nav-item > .nav-link.active:hover {
+      background: lighten($body-darker-color, 6%) !important;
+      color: $body-dark-heading-color !important;
+    }
+
+    .nav-sidebar > .nav-item > .nav-link:hover,
+    .nav-treeview > .nav-item > .nav-link:hover {
+      background: lighten($body-darker-color, 4%) !important;
+      color: $body-dark-heading-color !important;
+    }
+  }
+
+  // 菜单图标与文字保持一致的可见度
+  .main-sidebar .nav-link i {
+    color: inherit;
+  }
+}
