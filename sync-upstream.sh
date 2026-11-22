@@ -3,13 +3,14 @@
 #  同步上游代码 + 重建 gray 主题
 #  用法: bash sync-upstream.sh
 #
-#  脚本会自动检测远程仓库配置：
-#    - 没有 upstream（官方仓库）时，自动添加，无需手动操作
-#    - 没有 origin（你自己的 fork）时，给出提示（因为不知道你的账号名）
+#  脚本会自动检测并补全远程仓库配置：
+#    - upstream（官方仓库）缺失时自动添加
+#    - origin（你自己的 fork）缺失时自动添加
 # =============================================================
 set -uo pipefail
 
 UPSTREAM_URL="https://github.com/dcat-x/dcat-admin.git"
+ORIGIN_URL="https://github.com/aaacry/dcat-admin.git"
 
 echo "==> 0/4 检查远程仓库配置"
 if git remote | grep -qx 'upstream'; then
@@ -22,9 +23,8 @@ fi
 if git remote | grep -qx 'origin'; then
   echo "    ✓ origin 已存在，跳过"
 else
-  echo "    ! 未发现 origin（你自己的 fork）。同步仍会继续，但最后无法推送。"
-  echo "      之后请执行一次（把「你的账号」换成实际用户名）："
-  echo "          git remote add origin https://github.com/你的账号/dcat-admin.git"
+  echo "    + 未发现 origin，自动添加：${ORIGIN_URL}"
+  git remote add origin "$ORIGIN_URL"
 fi
 
 echo "==> 1/4 拉取上游最新代码"
@@ -51,17 +51,13 @@ if [ ! -d node_modules ]; then
 fi
 npm run prod:theme:gray
 
-echo "==> 4/4 完成检查"
+echo "==> 4/4 完成"
 echo ""
-if git remote | grep -qx 'origin'; then
-  echo "    同步完成。接下来："
-  echo "      1) 如果有文件变化，提交它们："
-  echo "           git add -A && git commit -m 'chore: 重建 gray 主题资源'"
-  echo "      2) 推送到你自己的 fork："
-  echo "           git push origin main"
-else
-  echo "    同步完成，但还没有 origin，无法推送。请先添加你的 fork："
-  echo "        git remote add origin https://github.com/你的账号/dcat-admin.git"
-  echo "    然后推送："
-  echo "        git push -u origin main"
-fi
+echo "    同步完成。接下来："
+echo "      1) 如果有文件变化，提交它们："
+echo "           git add -A && git commit -m 'chore: 重建 gray 主题资源'"
+echo "      2) 推送到你自己的 fork："
+echo "           git push origin main"
+echo ""
+echo "    提示：如果 push 提示仓库不存在，说明还没在网页点 Fork："
+echo "          https://github.com/dcat-x/dcat-admin"
