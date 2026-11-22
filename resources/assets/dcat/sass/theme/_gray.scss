@@ -3,12 +3,11 @@
 //  Description: Gray theme color overrides
 //  ----------------------------------------------------------------------------------------------
 //  This theme provides a modern dark header with neutral gray accent colors.
-//  Primary color: #030712 (near black)
+//  Primary color: #171717 (dark gray)
 //  Header/Navbar: #171717 (dark gray)
 // ================================================================================================
 
 // Gray theme specific variables
-$gray-theme-primary: #030712;
 $gray-theme-header: #171717;
 $gray-theme-header-hover: #333333;
 $gray-theme-sidebar-text: #333;
@@ -93,6 +92,23 @@ body.layout-color-gray {
   .grid-selector .wrap {
     background-color: $gray-theme-header;
     color: #fff;
+
+    .select-label {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    ul > li a {
+      color: rgba(255, 255, 255, 0.85);
+
+      &:hover {
+        color: #fff;
+      }
+
+      &.active {
+        color: #fff;
+        font-weight: bold;
+      }
+    }
   }
 
   // ============================================

@@ -105,9 +105,9 @@ class Color
         ],
         'gray' => [
             'colors' => [
-                'primary' => '#030712',
-                'primary-darker' => '#030712',
-                'link' => '#030712',
+                'primary' => '#171717',
+                'primary-darker' => '#171717',
+                'link' => '#171717',
             ],
         ],
         // Tailwind CSS 配色主题
@@ -327,7 +327,7 @@ class Color
         // 深色
         'dark-mode-color' => '#222233',
         'dark-mode-color2' => '#1e1e2d',
-        'dark-mode-font' => '##a8a9bb',
+        'dark-mode-font' => '#a8a9bb',
     ];
 
     /**
