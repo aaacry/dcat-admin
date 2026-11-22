@@ -239,6 +239,14 @@ body.dark-mode {
 
     .select-label {
       color: $body-dark-muted-color;
+
+      .clear {
+        color: #f87171 !important;
+
+        &:hover {
+          color: #fca5a5 !important;
+        }
+      }
     }
 
     ul > li a {

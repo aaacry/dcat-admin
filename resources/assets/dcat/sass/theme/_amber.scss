@@ -17,7 +17,7 @@ body.layout-color-amber {
     background-color: $amber-theme-header !important;
   }
 
-  .header-navbar a,
+  .header-navbar a:not(.dropdown-item),
   .navbar-header a {
     color: #fff !important;
   }

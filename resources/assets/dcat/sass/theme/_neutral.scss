@@ -17,7 +17,7 @@ body.layout-color-neutral {
     background-color: $neutral-theme-header !important;
   }
 
-  .header-navbar a,
+  .header-navbar a:not(.dropdown-item),
   .navbar-header a {
     color: #fff !important;
 
@@ -115,6 +115,7 @@ body.layout-color-neutral {
     }
 
     // 垃圾桶图标：浅红（语义“清除”），深底可见，悬停变亮
+    .select-label .clear,
     ul > li a.clear {
       color: #f87171 !important;
 

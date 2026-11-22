@@ -45,12 +45,14 @@
 .grid-selector li:hover .add {
   visibility: visible;
 }
-.grid-selector ul .clear {
-  visibility: hidden;
-}
-.grid-selector ul:hover .clear {
+.grid-selector .select-label .clear {
+  margin-left: 6px;
   color: $red-darker;
-  visibility: visible;
+  font-size: 12px;
+  opacity: .75;
+}
+.grid-selector .select-label .clear:hover {
+  opacity: 1;
 }
 
 .grid-selector {
